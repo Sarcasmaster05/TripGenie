@@ -38,18 +38,20 @@ body {
     z-index: 9999;
 }
 
-.loader {
-    border: 6px solid var(--sand-beige);
-    border-top: 6px solid var(--forest-green);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
+/* 🎥 Smooth Preloader Animation */
+@keyframes preloaderSpin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.loader {
+    border: 8px solid var(--sand-beige);
+    border-top: 8px solid var(--hover-gold);
+    border-bottom: 8px solid var(--forest-green);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: preloaderSpin 1s linear infinite;
 }
 
 /* 🔥 Navbar */
@@ -101,23 +103,39 @@ body {
     color: var(--hover-gold);
 }
 
-/* 🌟 CTA Button */
+/* 🌟 Enhanced Login Button */
 .cta-button {
-    background: linear-gradient(135deg, var(--forest-green), var(--deep-olive));
-    color: var(--white);
-    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--hover-gold), var(--forest-green));
+    padding: 12px 30px;
     border-radius: 30px;
-    font-size: 1rem;
-    font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.4s;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--white);
+    animation: fadeInButton 1.2s ease-out forwards;
+    opacity: 0;
 }
 
 .cta-button:hover {
-    background: var(--hover-gold);
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    background: var(--forest-green);
+    color: var(--hover-gold);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* 🎬 Smooth Fade-In Animation */
+@keyframes fadeInButton {
+    0% { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 /* 🎥 Hero Section */
@@ -207,7 +225,7 @@ body {
     }
 }
 
-/* Footer Styles */
+/* 📜 Footer Styles */
 .footer {
     background-color: var(--earth-brown);
     color: white;
@@ -240,40 +258,6 @@ body {
     color: var(--hover-gold);
 }
 
-.social-links a {
-    color: white;
-    font-size: 1.5rem;
-    margin-right: 15px;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: var(--hover-gold);
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #777;
-}
-
-.footer-bottom p {
-    font-size: 0.85rem;
-}
-
-.footer-bottom a {
-    color: var(--hover-gold);
-    text-decoration: none;
-    margin-left: 10px;
-    transition: color 0.3s;
-}
-
-.footer-bottom a:hover {
-    color: white;
-}
-
-/* Responsive Footer */
 @media (max-width: 768px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
@@ -284,4 +268,70 @@ body {
     .footer-container {
         grid-template-columns: 1fr;
     }
+}
+
+/* User Options */
+.user-options {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 🔽 Trip Form Section - NEW */
+.trip-form-section {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+#plannerForm label {
+    display: block;
+    text-align: left;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+#plannerForm input,
+#plannerForm select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#plannerForm button {
+    background: linear-gradient(to right, #f7b733, #fc4a1a);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+#plannerForm button:hover {
+    background: linear-gradient(to right, #fc4a1a, #f7b733);
 }
