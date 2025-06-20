@@ -54,9 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     typeText();
 
-    // 🌟 Scroll-Triggered Animations
-    const sections = document.querySelectorAll('.section');
-
+    // 🌟 Scroll-Triggered Animations for other sections
+    const sections = document.querySelectorAll('.section:not(#how-it-works, #testimonials, #contact)');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -98,27 +97,152 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500); // Delayed appearance for smoothness
     }
 
-    // 🌟 Trip Planner Form Submission
-    const plannerForm = document.getElementById('plannerForm');
-    if (plannerForm) {
-        plannerForm.addEventListener('submit', function (e) {
+    // 🌟 Modal Functionality
+    const openModal = document.getElementById("openModal");
+    const authModal = document.getElementById("authModal");
+    const closeModal = document.getElementById("closeModal");
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const otpForm = document.getElementById("otpForm");
+    const otpTrigger = document.getElementById("otpLoginTrigger");
+    const backToLogin = document.getElementById("backToLogin");
+
+    openModal?.addEventListener("click", () => {
+        authModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    });
+
+    closeModal?.addEventListener("click", () => {
+        authModal.style.display = "none";
+        document.body.style.overflow = "auto";
+        // Reset views
+        loginForm.classList.add("active-form");
+        signupForm.classList.remove("active-form");
+        otpForm.classList.remove("active-form");
+        loginTab.classList.add("active-tab");
+        signupTab.classList.remove("active-tab");
+    });
+
+    loginTab?.addEventListener("click", () => {
+        loginForm.classList.add("active-form");
+        signupForm.classList.remove("active-form");
+        otpForm.classList.remove("active-form");
+        loginTab.classList.add("active-tab");
+        signupTab.classList.remove("active-tab");
+    });
+
+    signupTab?.addEventListener("click", () => {
+        signupForm.classList.add("active-form");
+        loginForm.classList.remove("active-form");
+        otpForm.classList.remove("active-form");
+        signupTab.classList.add("active-tab");
+        loginTab.classList.remove("active-tab");
+    });
+
+    otpTrigger?.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginForm.classList.remove("active-form");
+        otpForm.classList.add("active-form");
+    });
+
+    backToLogin?.addEventListener("click", (e) => {
+        e.preventDefault();
+        otpForm.classList.remove("active-form");
+        loginForm.classList.add("active-form");
+    });
+
+    // 🌟 Static Features: Ensure they are visible
+    const staticFeatures = document.querySelectorAll('.feature-card.static-feature');
+    staticFeatures.forEach(function(feature) {
+        feature.style.opacity = '1';  // Ensure visibility
+        feature.style.animation = 'none';  // Disable any unwanted animations
+    });
+
+    // 🌟 Animated Features: Apply fade-in effect if needed
+    const animatedFeatures = document.querySelectorAll('.feature-card.fade-in');
+    animatedFeatures.forEach(function(feature) {
+        feature.style.opacity = '0';  // Start with opacity 0 for fade-in
+        feature.classList.add('fade-in');  // Apply fade-in class for animation
+    });
+
+    // 🌟 Animate Sections on Scroll (How It Works, Testimonials, Contact)
+    const animatedSections = document.querySelectorAll('#how-it-works, #testimonials, #contact');
+
+    // Trigger the animation on load for sections that are already visible in the viewport
+    animatedSections.forEach((section) => {
+        section.classList.add('animate'); // These sections will always be visible and animated
+    });
+
+    // 🌟 Contact Form Submit Handler (Optional Basic Handling)
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const formData = new FormData(this);
-            const tripData = Object.fromEntries(formData.entries());
+            // Simple feedback animation
+            const button = contactForm.querySelector("button");
+            button.textContent = "Sending...";
+            button.disabled = true;
 
-            console.log("Trip Planning Data:", tripData);
-
-            // Simulate processing
-            alert(`Generating itinerary for ${tripData.destination}...`);
-
-            // In production: send data to backend (Java endpoint)
-            // fetch('/api/planTrip', {
-            //   method: 'POST',
-            //   body: JSON.stringify(tripData)
-            // })
-            // .then(res => res.json())
-            // .then(data => console.log(data));
+            // Simulate sending (you can replace this with real API call)
+            setTimeout(() => {
+                button.textContent = "Message Sent!";
+                button.style.backgroundColor = "#1b3c32";
+                button.style.color = "#fff";
+            }, 1500);
         });
     }
+
+    // 🌟 Animate each .step and .testimonial with delay
+    const steps = document.querySelectorAll(".step");
+    const testimonials = document.querySelectorAll(".testimonial");
+
+    steps.forEach((el, i) => {
+        el.style.animationDelay = `${i * 0.2}s`;
+    });
+
+    testimonials.forEach((el, i) => {
+        el.style.animationDelay = `${i * 0.2}s`;
+    });
+});
+
+// 🌟 Trip Planner Backend Communication
+function planTrip() {
+    const tripData = {
+        location: document.getElementById("location").value,
+        budget: document.getElementById("budget").value,
+        date: document.getElementById("date").value,
+        companions: document.getElementById("companions").value,
+        activities: document.getElementById("activities").value,
+    };
+
+    fetch("http://localhost:5000/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(tripData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        displayItinerary(data.itinerary);
+    });
+}
+
+function displayItinerary(itinerary) {
+    let html = "";
+    for (let key in itinerary) {
+        html += `<p><strong>${key}:</strong> ${itinerary[key]}</p>`;
+    }
+    document.getElementById("itinerary").innerHTML = html;
+}
+
+//new
+window.addEventListener('load', function () {
+    // Add the 'visible' class to all feature sections once the page is fully loaded
+    const featureSections = document.querySelectorAll('.feature-section');
+    featureSections.forEach(function(section) {
+        section.classList.add('visible');
+    });
 });
