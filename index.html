@@ -17,7 +17,7 @@
     <!-- Header Section -->
     <header class="navbar">
         <div class="logo">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\assetslogo.png.jpeg" alt="TripGenie Logo"> 
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\20250606_2351_TripGenie Logo Design_simple_compose_01jx37hc5tf8fvtkry8yyna4wn.png" alt="TripGenie Logo"> 
             <span>TripGenie</span>
         </div>
         <nav>
@@ -29,7 +29,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <a href="#" class="cta-button">Plan Your Trip</a>
+        <a href="#" class="cta-button" id="openModal">Plan Your Trip</a>
     </header>
 
     <!-- Hero Section -->
@@ -45,53 +45,144 @@
         </div>
     </section>
 
-    <!-- Trip Planning Form Section -->
-    <section id="trip-form" class="trip-form-section">
-        <div class="form-container">
-            <h2>Plan Your Trip</h2>
-            <p>Enter your preferences and let TripGenie create the perfect itinerary!</p>
-            <form id="plannerForm">
-                <label>Destination:
-                    <input type="text" name="destination" placeholder="e.g., Jaipur" required />
-                </label>
-                <label>Travel Date:
-                    <input type="date" name="date" required />
-                </label>
-                <label>Budget (INR):
-                    <input type="number" name="budget" placeholder="e.g., 15000" required />
-                </label>
-                <label>Companions:
-                    <select name="companions" required>
-                        <option value="">Select</option>
-                        <option value="solo">Solo</option>
-                        <option value="couple">Couple</option>
-                        <option value="family">Family</option>
-                        <option value="friends">Friends</option>
-                    </select>
-                </label>
-                <label>Activities:
-                    <input type="text" name="activities" placeholder="e.g., sightseeing, food, trekking" />
-                </label>
-                <button type="submit">Generate Itinerary</button>
-            </form>
+   <!-- Features Section – Part 1 -->
+<section id="features" class="section features-intro">
+    <div class="container">
+        <h2 class="section-title">AI-Driven Features – <span class="highlight">Smart, Bold, Unique</span></h2>
+
+        <div class="features-grid">
+            <!-- Static Feature Cards (No Fade-In Effect) -->
+            <div class="feature-card">
+                <i class="fas fa-video icon-circle"></i>
+                <h3>“Get Inspired”</h3>
+                <p>Extract travel ideas directly from social media reels and trending posts.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-brain icon-circle"></i>
+                <h3>TripGenie Engine</h3>
+                <p>Let our AI engine work its planning magic tailored to your vibe.</p>
+            </div>
+
+            <!-- Static Animated Feature Cards (No Animation) -->
+            <div class="feature-card">
+                <i class="fas fa-check-circle icon-circle"></i>
+                <h3>Zero Guesswork</h3>
+                <p>We eliminate manual research so you can travel smarter, not harder.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section – Part 2 -->
+<section class="section features-deep-dive">
+    <div class="container">
+        <h2 class="section-title">Deep Dive into Key Features</h2>
+
+        <div class="features-columns">
+            <div class="feature-box">
+                <i class="fas fa-map-marked-alt"></i>
+                <h4>Optimal Route Planning</h4>
+                <p>Our AI finds the most efficient travel path to save time and fuel.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fas fa-edit"></i>
+                <h4>Fully Editable Itinerary</h4>
+                <p>Take full control – add, remove, or tweak your trip at any moment.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fas fa-utensils"></i>
+                <h4>Cuisine Discovery</h4>
+                <p>Find hidden local gems and flavors, curated by AI just for you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section">
+        <h2 class="section-title">How It Works</h2>
+        <div class="how-it-works-steps">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Tell Us About Your Trip</h3>
+                <p>Choose your destination, travel dates, budget, companions, and preferred activities.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>We Create Your Itinerary</h3>
+                <p>Our AI generates a personalized trip plan just for you, in seconds.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Start Exploring!</h3>
+                <p>Get your custom itinerary with places to visit, things to do, and where to stay. All tailored to your vibe.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Content Sections -->
-    <section id="features" class="section">Features Content Here</section>
-    <section id="how-it-works" class="section">How It Works Content Here</section>
-    <section id="testimonials" class="section">Testimonials Content Here</section>
-    <section id="contact" class="section">Contact Content Here</section>
+   <!-- Testimonials Section -->
+<section id="testimonials" class="section">
+    <h2 class="section-title">What Our Users Say</h2>
+    <div class="testimonials-container">
+        <div class="testimonial">
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\indian-testimonial-pranav-img-02-v01.png" alt="Aarav Sharma" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Aarav Sharma</h3>
+            <p>"TripGenie made our honeymoon to Manali unforgettable! Super easy to use and perfectly planned."</p>
+        </div>
+        <div class="testimonial">
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\Pooja-1-e1622323927868-350x350.jpg" alt="Priya Mehta" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Priya Mehta</h3>
+            <p>"I used TripGenie for a solo trip across Rajasthan. The AI itinerary was on point and saved me tons of research time!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\images.jpeg" alt="Kabir Desai" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Kabir Desai</h3>
+            <p>"Our family vacation to Kerala was smooth thanks to TripGenie. Loved the hotel suggestions!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\sravya-01.jpg" alt="Simran Kaur" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Simran Kaur</h3>
+            <p>"The planning was seamless. We got local recommendations that we’d never have found on Google!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\md-1.webp" alt="Rahul Nair" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Rahul Nair</h3>
+            <p>"As someone who hates planning trips, TripGenie is a lifesaver. Everything just… works!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\es-testi4.jpg" alt="Ishita Kapoor" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Ishita Kapoor</h3>
+            <p>"Honestly impressed with how detailed the itinerary was. Highly recommend for group trips!"</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <!-- Contact Section -->
+<section id="contact" class="section">
+    <h2 class="section-title">Contact Us</h2>
+    <p>If you have any questions, feedback, or just want to say hi — we’d love to hear from you!</p>
+    <div class="contact-details">
+        <p><strong>Email:</strong> support@tripgenie.in</p>
+        <p><strong>Phone:</strong> +91 12345 67890</p>
+        <p><strong>Location:</strong> Dhanbad, Jharkhand</p>
+    </div>
+</section>
+
 
     <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-container">
-            <!-- Footer Columns -->
             <div class="footer-column">
                 <h3>About TripGenie</h3>
                 <p>TripGenie is your AI-powered travel planner for India, crafting personalized itineraries and seamless bookings to make every journey unforgettable!</p>
             </div>
-
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
@@ -102,14 +193,12 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <p>Email: support@tripgenie.com</p>
                 <p>Phone: +91 12345 67890</p>
                 <p>Address: Dhanbad ,Jharkhand</p>
             </div>
-
             <div class="footer-column">
                 <h3>Follow Us</h3>
                 <div class="social-links">
@@ -120,13 +209,59 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>&copy; 2025 TripGenie. All rights reserved.</p>
             <a href="#" id="scrollToTop">Back to Top</a>
         </div>
     </footer>
 
+    <!-- Modal Background -->
+    <div id="authModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+
+            <div class="modal-tabs">
+                <button id="loginTab" class="active-tab">Login</button>
+                <button id="signupTab">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="form-tab active-form">
+                <h2>Welcome Back!</h2>
+                <input type="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <button class="auth-action">Login</button>
+
+                <div class="or-divider"><span>or</span></div>
+
+                <button class="google-login">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+
+                <div class="otp-option">
+                    <p>Prefer OTP? <a href="#" id="otpLoginTrigger">Login with OTP</a></p>
+                </div>
+            </div>
+
+            <!-- OTP Login -->
+            <div id="otpForm" class="form-tab">
+                <h2>OTP Login</h2>
+                <input type="tel" placeholder="Phone Number" required />
+                <button class="auth-action">Send OTP</button>
+                <p>Already have a password? <a href="#" id="backToLogin">Back to Login</a></p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signupForm" class="form-tab">
+                <h2>Create Account</h2>
+                <input type="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <button class="auth-action">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="scripts.js"></script>
 </body>
 </html>
