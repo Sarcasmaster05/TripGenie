@@ -105,14 +105,16 @@ body {
 
 /* 🌟 Enhanced Login Button */
 .cta-button {
-    background: linear-gradient(135deg, var(--hover-gold), var(--forest-green));
-    padding: 12px 30px;
-    border-radius: 30px;
+    background-color: #1f4f3f;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
     text-decoration: none;
-    color: var(--white);
-    font-weight: bold;
     font-size: 1rem;
-    transition: all 0.4s;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
     border: 2px solid var(--white);
     animation: fadeInButton 1.2s ease-out forwards;
@@ -120,8 +122,8 @@ body {
 }
 
 .cta-button:hover {
-    background: var(--forest-green);
-    color: var(--hover-gold);
+    background-color: #ffcf00;
+    color: #1f4f3f;
     transform: scale(1.05);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
 }
@@ -277,61 +279,372 @@ body {
     gap: 20px;
 }
 
-/* 🔽 Trip Form Section - NEW */
-.trip-form-section {
-    background-color: #f9f9f9;
-    padding: 60px 20px;
-    text-align: center;
+/* Modal & Blur */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(25, 25, 25, 0.7);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-.form-container {
-    max-width: 600px;
-    margin: 0 auto;
+.modal-content {
     background: white;
+    width: 400px;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
 }
 
-.form-container h2 {
-    color: #333;
-    margin-bottom: 10px;
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
-.form-container p {
-    color: #666;
+.modal-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.modal-tabs button {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.modal-tabs .active-tab {
+    border-bottom: 3px solid #1f4f3f;
+    color: #1f4f3f;
+}
+
+.form-tab {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.active-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-action {
+    background-color: #1f4f3f;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-action:hover {
+    background-color: #ffcf00;
+    color: #1f4f3f;
+}
+
+.or-divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.or-divider span {
+    background: #fff;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.or-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    z-index: 0;
+}
+
+.google-login {
+    background-color: #fff;
+    color: #444;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.google-login:hover {
+    background-color: #f5f5f5;
+}
+
+.otp-option {
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ===== Section Titles ===== */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #1b3c32;
+    position: relative;
+    animation: fadeInDown 1s ease;
+}
+
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: #f4c613;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ===== How It Works ===== */
+#how-it-works {
+    background: #ffffff;
+    padding: 80px 20px;
+}
+
+.how-it-works-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.step {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.step img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    font-size: 1.6rem;
+    color: #1f4f3f;
+    margin-bottom: 15px;
+}
+
+.step p {
+    font-size: 1.1rem;
+    color: #5c5c5c;
+}
+
+/* Ensure sections below hero remain static and visible */
+#how-it-works,
+#testimonials,
+#contact {
+    position: relative;
+    opacity: 1;
+    animation: none;
+}
+
+/* 🧑‍💬 Testimonial Avatars */
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--forest-green);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* FEATURE SECTION */
+.features-intro, .features-deep-dive {
+    padding: 60px 0;
+    background-color: #f5f5f5;
+}
+
+/* Ensure these sections remain visible without animation */
+.features-intro, .features-deep-dive {
+    opacity: 1; /* Ensure visibility */
+    visibility: visible; /* Ensure visibility */
+    transition: none; /* No transition or animation */
+}
+
+.features-intro .container, .features-deep-dive .container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.features-intro .section-title, .features-deep-dive .section-title {
+    font-size: 2.5em;
+    text-align: center;
     margin-bottom: 30px;
 }
 
-#plannerForm label {
-    display: block;
-    text-align: left;
-    margin-bottom: 15px;
-    font-weight: bold;
+.features-intro .highlight {
+    color: #008C45; /* Green highlight */
+}
+
+/* Feature Grid (Part 1) */
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Individual Feature Cards */
+.feature-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    opacity: 1; /* Ensures visibility immediately */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Icon Styling */
+.icon-circle {
+    font-size: 40px;
+    padding: 15px;
+    background-color: #008C45;
+    color: #fff;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Static Features – No Animation */
+.feature-card.static-feature {
+    opacity: 1 !important; /* Make them visible immediately */
+    animation: none !important; /* Disable any animation */
+}
+
+/* Features Section – Part 2 (Columns) */
+.features-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.feature-box {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 30%;
+    text-align: center;
+}
+
+/* Icon Styling for Part 2 */
+.feature-box i {
+    font-size: 40px;
+    padding: 15px;
+    background-color: #008C45;
+    color: #fff;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Title and Text Styling */
+.feature-card h3, .feature-box h4 {
+    font-size: 1.5em;
     color: #333;
+    margin: 20px 0;
 }
 
-#plannerForm input,
-#plannerForm select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+.feature-card p, .feature-box p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.5;
 }
 
-#plannerForm button {
-    background: linear-gradient(to right, #f7b733, #fc4a1a);
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-    margin-top: 20px;
+/* Optional Hover Effects for All Feature Cards */
+.feature-card:hover, .feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-#plannerForm button:hover {
-    background: linear-gradient(to right, #fc4a1a, #f7b733);
+/* Animated Features – Fade-In Effect (if required in specific cases) */
+.feature-card.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
 }
+
+.feature-card.delay-1 {
+    animation-delay: 0.5s;
+}
+
+.feature-card.delay-2 {
+    animation-delay: 1s;
+}
+
+/* Fade-In Keyframes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* General Style for Feature Sections */
+.feature-section {
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 1s ease, visibility 1s ease; /* Smooth transition */
+}
+
+/* Make sure Feature 1 and Feature 2 are always visible */
+.features-intro.visible, .features-deep-dive.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: none; /* No transition for Feature 1 and 2 */
+}
+
+/* Ensure only feature sections are hidden initially */
+.feature-section {
+    opacity: 0; /* Start as hidden */
+    transform: translateY(20px); /* Start from a lower position */
+    transition: opacity 1s ease, transform 1s ease; /* Transition smoothly */
+}
+
+/* Slide-in Animation */
+.feature-section.visible {
+    opacity: 1; /* Make it visible */
+    transform: translateY(0); /* Bring it to the final position */
+}
+
+/* Use the .visible class in JavaScript to trigger the animation after page load */
+
