@@ -477,13 +477,39 @@ body {
 }
 
 /* 🧑‍💬 Testimonial Avatars */
-.testimonial-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--forest-green);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.testimonials {
+  width: 100%;
+  overflow: hidden;   /* hides the scrollbars */
+  background: #f8f8f8;
+  padding: 40px 0;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 20s linear infinite;
+}
+
+.testimonial-card {
+  min-width: 250px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.testimonial-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* adjust -50% depending on number of cards */
 }
 
 /* FEATURE SECTION */
@@ -647,4 +673,186 @@ body {
 }
 
 /* Use the .visible class in JavaScript to trigger the animation after page load */
+
+/* =============================
+   Modal Base Styling
+   ============================= */
+.modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px); /* blur background */
+  background-color: rgba(0,0,0,0.6); /* dark overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* above header */
+  overflow-y: auto;
+}
+
+/* =============================
+   Modal Content
+   ============================= */
+.modal-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Heading – Smaller Text & Emoji */
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;       /* smaller font size */
+  color: #333;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;             /* slightly smaller spacing */
+  white-space: nowrap;      /* prevent wrapping */
+}
+
+/* Optional: specifically target emojis for slight scaling */
+.modal-content h2::before,
+.modal-content h2::after {
+  font-size: 1.4rem;       /* match text size */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Modal Heading */
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* =============================
+   Trip Form Styling (inside modal)
+   ============================= */
+#trip-form-section {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Form Groups */
+.trip-form .form-group {
+  position: relative;
+}
+
+/* Inputs & Selects */
+.trip-form .form-group input,
+.trip-form .form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #222;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* Focus Effect */
+.trip-form .form-group input:focus,
+.trip-form .form-group select:focus {
+  border-color: #3ca55c;
+  box-shadow: 0 0 10px rgba(60,165,92,0.2);
+}
+
+/* Floating Labels */
+.trip-form .form-group label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  color: #555;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: #fff;
+  padding: 0 4px;
+}
+
+.trip-form .form-group input:focus + label,
+.trip-form .form-group input:not(:placeholder-shown) + label,
+.trip-form .form-group select:focus + label,
+.trip-form .form-group select:not([value=""]) + label {
+  top: -8px;
+  font-size: 0.75rem;
+  color: #3ca55c;
+}
+
+/* Button Styling */
+.trip-form .plan-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #3ca55c;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trip-form .plan-btn:hover {
+  background: #2a8c45;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Placeholder Hack */
+.trip-form input::placeholder {
+  color: transparent;
+}
+
+/* =============================
+   Responsive
+   ============================= */
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 1.5rem;
+  }
+  .trip-form {
+    gap: 1rem;
+  }
+  #trip-form-section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+
 
