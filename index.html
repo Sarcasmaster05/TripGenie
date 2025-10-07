@@ -17,7 +17,7 @@
     <!-- Header Section -->
     <header class="navbar">
         <div class="logo">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\20250606_2351_TripGenie Logo Design_simple_compose_01jx37hc5tf8fvtkry8yyna4wn.png" alt="TripGenie Logo"> 
+            <img src="C:\Users\abhis\OneDrive\Desktop\planner\Flux_Dev_A_stylized_modern_logo_for_TripGenie_featuring_a_maje_1.jpeg" alt="TripGenie Logo"> 
             <span>TripGenie</span>
         </div>
         <nav>
@@ -33,17 +33,62 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <video autoplay loop muted playsinline class="background-video">
-            <source src="C:\Users\abhis\OneDrive\Desktop\planner\WhatsApp Video 2025-03-28 at 18.53.31_d335089b.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <h1>Discover India's Hidden Gems</h1>
-            <p>Your AI-powered trip planner for personalized travel experiences.</p>
-            <a href="#" class="cta-button">Start Planning</a>
+<section id="home" class="hero">
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="C:\Users\abhis\OneDrive\Desktop\planner\WhatsApp Video 2025-03-28 at 18.53.31_d335089b.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Discover India's Hidden Gems</h1>
+        <p>Your AI-powered trip planner for personalized travel experiences.</p>
+        <a href="#" class="cta-button" id="openTripModal">Start Planning</a>
+
+    </div>
+</section>
+
+<!-- Trip Planning Modal -->
+<div id="tripModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>✨ Plan Your Perfect Journey ✨</h2>
+
+    <section id="trip-form-section">
+      <form id="tripForm" class="trip-form">
+        <div class="form-group">
+          <input type="text" name="destination" placeholder=" " required>
+          <label>Destination</label>
         </div>
+        <div class="form-group">
+          <input type="date" name="date" placeholder=" " required>
+          <label>Travel Date</label>
+        </div>
+        <div class="form-group">
+          <input type="number" name="budget" placeholder=" " required>
+          <label>Budget (INR)</label>
+        </div>
+        <div class="form-group">
+          <select name="companions" required>
+            <option value="">Select...</option>
+            <option value="solo">Solo</option>
+            <option value="couple">Couple</option>
+            <option value="family">Family</option>
+            <option value="friends">Friends</option>
+          </select>
+          <label>Who's Traveling?</label>
+        </div>
+        <div class="form-group">
+          <input type="text" name="activities" placeholder=" ">
+          <label>Activities</label>
+        </div>
+        <button type="submit" class="plan-btn">🚀 Generate My Plan</button>
+      </form>
     </section>
+  </div>
+</div>
+
+  </div>
+</div>
+
 
    <!-- Features Section – Part 1 -->
 <section id="features" class="section features-intro">
@@ -126,40 +171,39 @@
     </section>
 
    <!-- Testimonials Section -->
-<section id="testimonials" class="section">
-    <h2 class="section-title">What Our Users Say</h2>
-    <div class="testimonials-container">
-        <div class="testimonial">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\indian-testimonial-pranav-img-02-v01.png" alt="Aarav Sharma" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h3>Aarav Sharma</h3>
-            <p>"TripGenie made our honeymoon to Manali unforgettable! Super easy to use and perfectly planned."</p>
-        </div>
-        <div class="testimonial">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\Pooja-1-e1622323927868-350x350.jpg" alt="Priya Mehta" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h3>Priya Mehta</h3>
-            <p>"I used TripGenie for a solo trip across Rajasthan. The AI itinerary was on point and saved me tons of research time!"</p>
-        </div>
-        <div class="testimonial">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\images.jpeg" alt="Kabir Desai" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h3>Kabir Desai</h3>
-            <p>"Our family vacation to Kerala was smooth thanks to TripGenie. Loved the hotel suggestions!"</p>
-        </div>
-        <div class="testimonial">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\sravya-01.jpg" alt="Simran Kaur" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h3>Simran Kaur</h3>
-            <p>"The planning was seamless. We got local recommendations that we’d never have found on Google!"</p>
-        </div>
-        <div class="testimonial">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\md-1.webp" alt="Rahul Nair" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h3>Rahul Nair</h3>
-            <p>"As someone who hates planning trips, TripGenie is a lifesaver. Everything just… works!"</p>
-        </div>
-        <div class="testimonial">
-            <img src="C:\Users\abhis\OneDrive\Desktop\planner\es-testi4.jpg" alt="Ishita Kapoor" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h3>Ishita Kapoor</h3>
-            <p>"Honestly impressed with how detailed the itinerary was. Highly recommend for group trips!"</p>
-        </div>
+<section class="testimonials">
+  <div class="testimonial-wrapper">
+    <div class="testimonial-card"> 
+      <img src="C:\Users\abhis\OneDrive\Desktop\planner\indian-testimonial-pranav-img-02-v01.png" alt="Profile 1">
+      <p>"TripGenie made our Goa trip unforgettable!"</p>
+      <h4>Rahul</h4>
     </div>
+    <div class="testimonial-card"> 
+      <img src="C:\Users\abhis\OneDrive\Desktop\planner\es-testi4.jpg" alt="Profile 2">
+      <p>"Best travel planner ever!"</p>
+      <h4>Priya</h4>
+    </div>
+    <div class="testimonial-card"> 
+      <img src="C:\Users\abhis\OneDrive\Desktop\planner\images.jpeg" alt="Profile 3">
+      <p>"Saved us so much time and hassle!"</p>
+      <h4>Ankit</h4>
+    </div>
+    <div class="testimonial-card"> 
+      <img src="C:\Users\abhis\OneDrive\Desktop\planner\sravya-01.jpg" alt="Profile 4">
+      <p>"Amazing itineraries, very detailed!"</p>
+      <h4>Simran</h4>
+    </div>
+    <div class="testimonial-card"> 
+      <img src="C:\Users\abhis\OneDrive\Desktop\planner\md-1.webp" alt="Profile 5">
+      <p>"Loved the AI suggestions, so accurate!"</p>
+      <h4>Vikram</h4>
+    </div>
+    <div class="testimonial-card"> 
+      <img src="C:\Users\abhis\OneDrive\Desktop\planner\Pooja-1-e1622323927868-350x350.jpg" alt="Profile 6">
+      <p>"TripGenie made planning trips so easy!"</p>
+      <h4>Pooja</h4>
+    </div>
+  </div>
 </section>
 
 
