@@ -206,6 +206,41 @@ document.addEventListener("DOMContentLoaded", function () {
     testimonials.forEach((el, i) => {
         el.style.animationDelay = `${i * 0.2}s`;
     });
+
+    // ----------------- Testimonial Film Strip -----------------
+    const wrapper = document.querySelector('.testimonial-wrapper');
+    if(wrapper) {
+        // Duplicate cards for seamless scrolling
+        wrapper.innerHTML += wrapper.innerHTML;
+
+        let scrollAmount = 0;
+        let speed = 1; // pixels per frame
+        let isPaused = false;
+
+        // Pause on hover
+        wrapper.addEventListener("mouseenter", () => { isPaused = true; });
+        wrapper.addEventListener("mouseleave", () => { isPaused = false; });
+
+        function scrollTestimonials() {
+            if(!isPaused) {
+                scrollAmount += speed;
+                if(scrollAmount >= wrapper.scrollWidth / 2) { 
+                    scrollAmount = 0; // reset for infinite effect
+                }
+                wrapper.style.transform = `translateX(-${scrollAmount}px)`;
+            }
+            requestAnimationFrame(scrollTestimonials);
+        }
+
+        scrollTestimonials();
+
+        // Optional: make speed responsive to screen width
+        window.addEventListener("resize", () => {
+            if(window.innerWidth < 600) speed = 0.5;
+            else speed = 1;
+        });
+    }
+    // ---------------------------------------------------------
 });
 
 // 🌟 Trip Planner Backend Communication
@@ -238,11 +273,47 @@ function displayItinerary(itinerary) {
     document.getElementById("itinerary").innerHTML = html;
 }
 
-//new
+// 🌟 Features visibility on window load
 window.addEventListener('load', function () {
-    // Add the 'visible' class to all feature sections once the page is fully loaded
     const featureSections = document.querySelectorAll('.feature-section');
     featureSections.forEach(function(section) {
         section.classList.add('visible');
     });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tripModal = document.getElementById("tripModal");
+  const openBtn = document.getElementById("openTripModal"); // hero "Start Planning" button
+  const closeBtn = tripModal.querySelector(".close-btn");
+  const form = document.getElementById("tripForm");
+
+  // Open modal when "Start Planning" is clicked
+  openBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // prevent page reload
+    tripModal.style.display = "flex";
+  });
+
+  // Close modal when "×" is clicked
+  closeBtn.addEventListener("click", () => {
+    tripModal.style.display = "none";
+  });
+
+  // Close modal if clicking outside modal content
+  window.addEventListener("click", (e) => {
+    if (e.target === tripModal) {
+      tripModal.style.display = "none";
+    }
+  });
+
+  // Handle form submit
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    console.log("Trip Data:", data);
+
+    alert("✅ Your trip plan is being generated (mock mode).");
+
+    tripModal.style.display = "none"; // auto-close after submit
+  });
 });
