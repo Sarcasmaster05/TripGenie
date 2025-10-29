@@ -853,6 +853,49 @@ body {
     padding-bottom: 15px;
   }
 }
+/* 🌟 AI Itinerary Modal */
+.itinerary-content {
+  max-width: 700px;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  color: #222;
+  text-align: left;
+  overflow-y: auto;
+  max-height: 80vh;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Title */
+.itinerary-content h2 {
+  text-align: center;
+  color: #1a4d2e;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+/* Text formatting */
+.itinerary-text {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Smooth fade animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 
