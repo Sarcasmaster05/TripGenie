@@ -166,13 +166,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 🌟 Trip Modal Functionality + AI Integration
+// 🌟 Trip Modal Functionality + JSON Integration
 document.addEventListener("DOMContentLoaded", () => {
     const tripModal = document.getElementById("tripModal");
     const openBtn = document.getElementById("openTripModal");
     const closeBtn = tripModal?.querySelector(".close-btn");
     const form = document.getElementById("tripForm");
-    const output = document.getElementById("output"); // Add this to your HTML
+    const output = document.getElementById("output");
 
     openBtn?.addEventListener("click", (e) => {
         e.preventDefault();
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === tripModal) tripModal.style.display = "none";
     });
 
-    // ✅ Final AI-powered Trip Generation (Flask backend)
+    // ✅ Local JSON-driven Trip Generation (Flask backend)
     form?.addEventListener("submit", async (e) => {
         e.preventDefault();
 
@@ -199,6 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
             activities: document.getElementById("activities").value,
         };
 
+        output.innerHTML = "⏳ Generating itinerary...";
+
         try {
             const response = await fetch("http://127.0.0.1:5000/api/generate", {
                 method: "POST",
@@ -207,18 +209,55 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const data = await response.json();
-const output = document.querySelector("#output"); // make sure your HTML has this element
 
-if (data.error) {
-  output.innerHTML = `<p style="color:red;">⚠️ ${data.error}</p>`;
-} else {
-  output.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-}
+            if (data.error) {
+                output.innerHTML = `<p style="color:red;">⚠️ ${data.error}</p>`;
+            } else {
+                const hotelCards = data.hotels.map(h => `
+                    <div class="hotel-card">
+                        <h4>${h.name}</h4>
+                        <p>⭐ ${h.rating} | ₹${h.price_min} - ₹${h.price_max}</p>
+                        <p><strong>Amenities:</strong> ${h.amenities.join(", ")}</p>
+                    </div>
+                `).join("");
 
+                const itineraryCards = data.itinerary?.plan.map(p => `
+                    <div class="itinerary-day">
+                        <h4>Day ${p.day}</h4>
+                        <p><strong>Morning:</strong> ${p.morning}</p>
+                        <p><strong>Afternoon:</strong> ${p.afternoon}</p>
+                        <p><strong>Evening:</strong> ${p.evening}</p>
+                    </div>
+                `).join("");
+
+                const hiddenGems = data.hidden_gems.map(g => `<li>${g}</li>`).join("");
+                const tips = data.tips.map(t => `<li>${t}</li>`).join("");
+
+                output.innerHTML = `
+                    <div class="trip-output-container">
+                        <h2>🌍 ${data.destination}</h2>
+                        <p><strong>State:</strong> ${data.state}</p>
+                        <p><strong>Best Time to Visit:</strong> ${data.meta?.best_time_to_visit || "N/A"}</p>
+                        <p><strong>Average Budget:</strong> ${data.meta?.avg_daily_budget_inr || "N/A"}</p>
+
+                        <h3>🏨 Recommended Hotels</h3>
+                        <div class="hotel-grid">${hotelCards}</div>
+
+                        <h3>🗓 Itinerary (${data.itinerary?.duration_days || "?"} Days)</h3>
+                        <div class="itinerary-grid">${itineraryCards}</div>
+
+                        <h3>💎 Hidden Gems</h3>
+                        <ul>${hiddenGems}</ul>
+
+                        <h3>💡 Travel Tips</h3>
+                        <ul>${tips}</ul>
+                    </div>
+                `;
+            }
 
         } catch (err) {
             console.error(err);
-            output.innerHTML = "⚠️ Something went wrong.";
+            output.innerHTML = "⚠️ Something went wrong with the backend.";
         }
     });
 });
