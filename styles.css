@@ -896,6 +896,61 @@ body {
   }
 }
 
+/* 🌍 Trip Output Styling */
+.trip-output-container {
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 20px;
+  color: #1b3c32;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.hotel-grid, .itinerary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.hotel-card, .itinerary-day {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hotel-card:hover, .itinerary-day:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.trip-output-container h2 {
+  text-align: center;
+  color: #174d3c;
+}
+
+.trip-output-container h3 {
+  margin-top: 25px;
+  color: #174d3c;
+  border-bottom: 2px solid #ffb703;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.trip-output-container ul {
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 
 
